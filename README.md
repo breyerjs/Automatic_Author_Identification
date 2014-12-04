@@ -15,6 +15,7 @@ OVERVIEW:
 	It calculates statistics about the writing style of each text, in an attempt to fingerprint
 	the author's writing style. Then the program uses a Maximum Entropy Classifier to identify 
 	the author of previously unseen novels, written by one of the four previously seen authors. 
+	The text files for all the novels in this repository are taken from https://www.gutenberg.org/
 	
 CLASSES / STRUCTURES:
 
