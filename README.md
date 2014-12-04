@@ -10,6 +10,7 @@ EXTERNAL MODULES / PACKAGES REQUIRED:
 	NUMPY - Numerical Python
 	
 OVERVIEW:
+
 	For each of four authors, this program reads in several novels written by that author. 
 	It calculates statistics about the writing style of each text, in an attempt to fingerprint
 	the author's writing style. Then the program uses a Maximum Entropy Classifier to identify 
