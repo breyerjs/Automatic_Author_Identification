@@ -1,6 +1,4 @@
-Jackson Breyer
-Fall/Winter, 2014
-Determining Authorship Through Stylometric Classification
+Jackson Breyer Fall/Winter, 2014 Determining Authorship Through Stylometric Classification
 
 LANGUAGE:
 
