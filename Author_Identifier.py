@@ -138,7 +138,7 @@ testAuth = allAuthors[4]
 train = [(author.corpus[x].summaryDict, author.name) for author in knownAuthors for x in range(0,len(author.corpus))]
 test = [(testAuth.corpus[x].summaryDict) for x in range(0,len(testAuth.corpus))]
 encoding = maxent.TypedMaxentFeatureEncoding.train(train, count_cutoff=3, alwayson_features=True)
-classifier = maxent.MaxentClassifier.train(train, bernoulli=False, encoding=encoding)#trace=0
+classifier = maxent.MaxentClassifier.train(train, bernoulli=False, encoding=encoding)
 result = classifier.classify_many(test)
 
 ######################################## PRINT RESULTS #####################################
