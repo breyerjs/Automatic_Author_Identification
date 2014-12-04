@@ -1,5 +1,5 @@
-Jackson Breyer 
-Fall/Winter, 2014 
+Jackson Breyer\n
+Fall/Winter, 2014\n
 Determining Authorship Through Stylometric Classification
 
 LANGUAGE:
