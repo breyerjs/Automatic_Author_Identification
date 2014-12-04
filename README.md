@@ -3,9 +3,11 @@ Fall/Winter, 2014
 Determining Authorship Through Stylometric Classification
 
 LANGUAGE:
+
 	Python 3
 	
 EXTERNAL MODULES / PACKAGES REQUIRED:
+
 	NLTK - Natural Language Toolkit
 	NUMPY - Numerical Python
 	
