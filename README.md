@@ -4,11 +4,11 @@ Determining Authorship Through Stylometric Classification
 
 LANGUAGE:
 	Python 3
-
+	
 EXTERNAL MODULES / PACKAGES REQUIRED:
 	NLTK - Natural Language Toolkit
 	NUMPY - Numerical Python
-
+	
 OVERVIEW:
 	For each of four authors, this program reads in several novels written by that author. 
 	It calculates statistics about the writing style of each text, in an attempt to fingerprint
