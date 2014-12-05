@@ -11,11 +11,13 @@ EXTERNAL MODULES / PACKAGES REQUIRED:
 	
 OVERVIEW:
 
-	For each of four authors, this program reads in several novels written by that author. 
-	It calculates statistics about the writing style of each text, in an attempt to fingerprint
-	the author's writing style. Then the program uses a Maximum Entropy Classifier to identify 
-	the author of previously unseen novels, written by one of the four previously seen authors. 
-	The text files for all the novels in this repository are taken from https://www.gutenberg.org/
+	For each subdirectory (author) in an input filepath, this program reads in several novels 
+	written by that author. A subdirectory named test is used as test data. Then the program
+	calculates statistics about the writing style of each authors' texts, in an attempt to 
+	fingerprint the author's writing style. Then, the program uses a Maximum Entropy Classifier 
+	to identify the author of previously unseen novels, written by one of the previously seen 
+	authors. The text files for all the novels in this repository are taken 
+	from https://www.gutenberg.org/
 	
 CLASSES / STRUCTURES:
 
@@ -37,26 +39,26 @@ CLASSES / STRUCTURES:
 PROGRAM FLOW:
 
 	1. User Enters Information:
-		In order to run this program, the user must enter the name of each author (4 in total) and
-		a filepath that holds text files of novels written by the associated author. Finally, the 
-		user must enter a filepath for the test files. This path must contain some number of text 
-		files written by the four authors. These need not all be written by the same author, but 
-		they must be written by one of the four authors entered earlier. 
+		In order to run this program, the user must enter a filepath. In the filepath, there
+		must be one folder per known authors. Each folder must contain some number of novels by
+		that author. There must also be a file named "Test", which will house the novels to be 
+		evaluated. These need not all be written by the same author, but they should each be 
+		written by one of the known authors. 
 
 	2. Create Authors:
-		The program begins by creating the Author objects for each of the four authors entered. 
-		These build Novel objects from the files in their given filepath. The Author objects are 
-		stored inthe knownAuthors list. Additionally, the program creates an author from the test 
-		files, which is stored in the variable testAuth. This is not stored in knownAuthors. All 
-		authors, known and unknown, are put through the prime_data() function together. This 
-		function multiplies or divides the items in summaryDict by a power of 10 so that they fall 
-		roughly between 0.1 and 1. Each feature, across all authors, is multiplied/divided by the 
-		same power of 10 so the relative proportions stay consistent. I've found that performing 
-		these multiplications/divisions significantly increases the performance of this program. 
+		The program begins by creating the Author objects for each of the author filepaths. 
+		These Author objects build Novel objects from the files in their respective filepaths. 
+		The Author objects are all stored in a list called allAuthors. This list is processed 
+		by the prime_data function, which multiplies or divides the items in summaryDict by a 
+		power of 10 so that they fall roughly between 0.1 and 1. Each feature, across all authors, 
+		is multiplied/divided by the same power of 10 so the relative proportions stay consistent. 
+		I've found that performing these multiplications/divisions significantly increases the 
+		performance of this program. Finally, the allAuthors is separated into a knownAuthors list 
+		and a variable testAuth, which holds the test Author. 
 
 	3. Run the Maxent Classifier:
-		Training and test sets are defined from the Authors that have been created. The named authors 
-		become the training data and the unknown author becomes the test set. A classifier object is 
+		Training and test sets are defined from the Authors that have been created. The knownAuthors 
+		become the training data and the testAuth becomes the test set. A classifier object is 
 		built from the training data, and then it is used to identify the test data. 
 
 	4. Print Results:
