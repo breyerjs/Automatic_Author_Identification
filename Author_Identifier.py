@@ -46,11 +46,11 @@ class Novel:
                 "Frequency of And":         self.freqOfAnd(),
                 "Frequency of Dialogue Tag":self.freqOfDialogue(),
                 "Frequency of Upper Case":  self.freqOfUpperCase(),
-                "Freq of MFW1-MFW2":        self.freqOfMFW1MinusMFW2(),
-                "Freq of MFW2-MFW3":        self.freqOfMFW2MinusMFW3(),
-                "Freq of MFW3-MFW4":        self.freqOfMFW3MinusMFW4(),
-                "Freq of MFW1-MFW3":        self.freqOfMFW1MinusMFW3(),
-                "Freq of MFW2-MFW4":        self.freqOfMFW2MinusMFW4()
+                "Freq of MFW1-MFW2":        self.freqOfMFWXMinusMFWY(1,2),
+                "Freq of MFW2-MFW3":        self.freqOfMFWXMinusMFWY(2,3),
+                "Freq of MFW3-MFW4":        self.freqOfMFWXMinusMFWY(3,4),
+                "Freq of MFW1-MFW3":        self.freqOfMFWXMinusMFWY(1,3),
+                "Freq of MFW2-MFW4":        self.freqOfMFWXMinusMFWY(2,4)
                 }
     def getNumTokens(self):
         numTokens = 0
@@ -72,18 +72,8 @@ class Novel:
                 count += 1
         return (count/self.numTokens)
     #Frequency of the xth most frequent word minus the frequency of the yth most frequent word
-    def freqOfMFW1MinusMFW2(self):
-        return (self.fd.most_common(2)[0][1]/self.numTokens)-(self.fd.most_common(2)[1][1]/self.numTokens) 
-    def freqOfMFW2MinusMFW3(self):
-        return (self.fd.most_common(3)[1][1]/self.numTokens)-(self.fd.most_common(3)[2][1]/self.numTokens)
-    def freqOfMFW3MinusMFW4(self):
-        return (self.fd.most_common(4)[2][1]/self.numTokens)-(self.fd.most_common(4)[3][1]/self.numTokens)
-    def freqOfMFW4MinusMFW5(self):
-        return (self.fd.most_common(5)[3][1]/self.numTokens)-(self.fd.most_common(5)[4][1]/self.numTokens)
-    def freqOfMFW1MinusMFW3(self):
-        return (self.fd.most_common(3)[0][1]/self.numTokens)-(self.fd.most_common(3)[2][1]/self.numTokens) 
-    def freqOfMFW2MinusMFW4(self):
-        return (self.fd.most_common(2)[1][1]/self.numTokens)-(self.fd.most_common(4)[3][1]/self.numTokens)
+    def freqOfMFWXMinusMFWY(self, x, y):
+        return (self.fd.most_common(y)[x-1][1]/self.numTokens)-(self.fd.most_common(y)[y-1][1]/self.numTokens)
 
 # Function to make values of summaryDict roughly btwn 0.1 and 1. This improves performance significantly.
 def prime_data(listOfAuthors):
