@@ -40,7 +40,7 @@ PROGRAM FLOW:
 
 	1. User Enters Information:
 		In order to run this program, the user must enter a filepath. In the filepath, there
-		must be one folder per known authors. Each folder must contain some number of novels by
+		must be one folder per known author. Each folder must contain some number of novels by
 		that author. There must also be a file named "Test", which will house the novels to be 
 		evaluated. These need not all be written by the same author, but they should each be 
 		written by one of the known authors. 
