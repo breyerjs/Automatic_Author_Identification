@@ -121,7 +121,6 @@ for directory,subdir,files in os.walk(theFilepath):
 allAuthors = prime_data(allAuthors)
 
 knownAuthors = []
-testAuth = []
 for auth in allAuthors:
     if auth.name.lower() != "test":
         knownAuthors.append(auth)
