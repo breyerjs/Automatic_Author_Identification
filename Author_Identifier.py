@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """
+LING 131A Final Project
 @author: Jackson Breyer
 Fall/Winter 2014
 """
@@ -7,22 +8,10 @@ import nltk, sys, os
 from nltk.classify import maxent
 
 ############################################################################
-#                   ENTER INFORMATION HERE                                 #
+#                   ENTER FILEPATH HERE                                    #
 ############################################################################
 
-author_0_name = "ENTER AUTHOR 0 NAME HERE"
-author_0_filePath = "ENTER AUTHOR 0 FILEPATH HERE"
-
-author_1_name = "ENTER AUTHOR 1 NAME HERE"
-author_1_filepath = "ENTER AUTHOR 1 FILEPATH HERE"
-
-author_2_name = "ENTER AUTHOR 2 NAME HERE"
-author_2_filepath= "ENTER AUTHOR 2 FILEPATH HERE"
-
-author_3_name = "ENTER AUTHOR 3 NAME HERE"
-author_3_filepath = "ENTER AUTHOR 3 FILEPATH HERE"
-
-testPath = "ENTER FILEPATH FOR TEST FILES HERE"
+theFilepath = "ENTER FILEPATH HERE"
 
 ############################################################################
                                                                            #
@@ -51,7 +40,7 @@ class Novel:
         self.fd = nltk.FreqDist(self.wordTokenizedText)
         self.numTokens = self.getNumTokens()
         self.summaryDict = {
-                # Getting these to be around 1>x>0.1 works best
+                # for some reason, getting these to be around 1>x>0.1 works best
                 # see prime_data().
                 "Word Count":               self.wordCount(),
                 "Frequency of And":         self.freqOfAnd(),
@@ -124,14 +113,20 @@ def prime_data(listOfAuthors):
     
 ####################################### CREATE AUTHORS ######################################
 
-Auth0 = Author(author_0_name, author_0_filePath)
-Auth1 = Author(author_1_name, author_1_filepath)
-Auth2 = Author(author_2_name, author_2_filepath)
-Auth3 = Author(author_3_name, author_3_filepath)
-testAuth = Author("Unknown", testPath)
-allAuthors = prime_data([Auth0, Auth1, Auth2, Auth3, testAuth])
-knownAuthors = allAuthors[:4]
-testAuth = allAuthors[4]
+allAuthors = []
+for directory,subdir,files in os.walk(theFilepath):
+    for s in subdir:
+        authFilePath = theFilepath + "/" + s
+        allAuthors.append(Author(s, authFilePath))
+allAuthors = prime_data(allAuthors)
+
+knownAuthors = []
+testAuth = []
+for auth in allAuthors:
+    if auth.name.lower() != "test":
+        knownAuthors.append(auth)
+    else:
+        testAuth = auth
 
 ######################################## RUN TEST ############################################
 
@@ -142,7 +137,6 @@ classifier = maxent.MaxentClassifier.train(train, bernoulli=False, encoding=enco
 result = classifier.classify_many(test)
 
 ######################################## PRINT RESULTS #####################################
-
 for i in range(0,len(testAuth.corpus)):
     print("\nPrediction for " + testAuth.corpus[i].filename + ":")
     print(result[i])
