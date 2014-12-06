@@ -15,26 +15,27 @@ OVERVIEW:
 	written by that author. A subdirectory named test is used as test data. Then the program
 	calculates statistics about the writing style of each author's texts, in an attempt to 
 	fingerprint the author's writing style. Then, the program uses a Maximum Entropy Classifier 
-	to identify the author of the test data--previously unseen novels which are presumed to have been 
-	written by one of the previously seen authors. Please note that the text files for all novels
-	in this repository are taken from https://www.gutenberg.org/
+	to identify the author of the test data--previously unseen novels which are presumed to have 
+	been written by one of the previously seen authors. Please note that the text files for all 
+	novels in this repository are taken from https://www.gutenberg.org/
 	
 CLASSES / STRUCTURES:
 
 	Novel:
-		The Novel class serves as a corpus reader for each file that is read in. It houses a 
-		few versions of the text and related data. That data includes the author and various 
-		statistics about the text's style. Those statistics are calculated on initialization. 
-		Note that most of the statistics are calculated based on the first 40,000 words of the
-		text, since I perceive that to be a representative sample. Keeping the sample sizes 
-		consistent makes the statistics relevant for comparison with other novels. The statistics
-		used for comparison are stored as {stat name : value} in the dictionary summaryDict.
+		The Novel class serves as a corpus reader for each file that is read in. It houses
+		a few versions of the text and related data. That data includes the author and 
+		various statistics about the text's style. Those statistics are calculated on 
+		initialization.Note that most of the statistics are calculated based on the first 
+		40,000 words of the text, since I perceive that to be a representative sample. 
+		Keeping the sample sizes consistent makes the statistics relevant for comparison 
+		with other novels. The statisticsused for comparison are stored as {stat name : value} 
+		in the dictionary summaryDict.
 		
 	Author:
-		The Author class serves to organize all the texts from a particular author. Each Author 
-		object takes an author name and a filepath as arguments. On initialization, the object
-		will create Novel objects from the files in the filepath given and all of its subfolders. 
-		Then it stores all of those novel objects in a list named 'corpus'. 
+		The Author class serves to organize all the texts from a particular author. Each 
+		Author object takes an author name and a filepath as arguments. On initialization, 
+		the object will create Novel objects from the files in the filepath given and all of 
+		its subfolders. Then it stores all of those novel objects in a list named 'corpus'. 
 
 PROGRAM FLOW:
 
@@ -50,17 +51,18 @@ PROGRAM FLOW:
 		These Author objects build Novel objects from the files in their respective filepaths. 
 		The Author objects are all stored in a list called allAuthors. This list is processed 
 		by the prime_data function, which multiplies or divides the items in summaryDict by a 
-		power of 10 so that they fall roughly between 0.1 and 1. Each feature, across all authors, 
-		is multiplied/divided by the same power of 10 so the relative proportions stay consistent. 
-		I've found that performing these multiplications/divisions significantly increases the 
-		performance of this program. Finally, the allAuthors is separated into a knownAuthors list 
-		and a variable testAuth, which holds the test Author. 
+		power of 10 so that they fall roughly between 0.1 and 1. Each feature, across all 
+		authors, is multiplied/divided by the same power of 10 so the relative proportions stay
+		consistent. I've found that performing these multiplications/divisions significantly 
+		increases the performance of this program. Finally, the allAuthors is separated into a 
+		knownAuthors list and a variable testAuth, which holds the test Author. 
 
 	3. Run the Maxent Classifier:
-		Training and test sets are defined from the Authors that have been created. The knownAuthors 
-		become the training data and the testAuth becomes the test set. A classifier object is 
-		built from the training data, and then it is used to identify the test data. 
+		Training and test sets are defined from the Authors that have been created. The 
+		knownAuthors become the training data and the testAuth becomes the test set. A 
+		classifier object is built from the training data, and then it is used to identify 
+		the test data. 
 
 	4. Print Results:
-		Finally, the results are printed for each test file. For each of those, the program gives the 
-		filename and then a guess for that file's author.
+		Finally, the results are printed for each test file. For each of those, the program 
+		gives the filename and then a guess for that file's author.
