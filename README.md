@@ -8,6 +8,10 @@ EXTERNAL MODULES / PACKAGES REQUIRED:
 
 	NLTK - Natural Language Toolkit
 	NUMPY - Numerical Python
+
+GOAL:
+	 Determine the author of test novels based on a training set of novels with their authors 
+	 already identified.
 	
 OVERVIEW:
 
