@@ -25,7 +25,7 @@ CLASSES / STRUCTURES:
 		The Novel class serves as a corpus reader for each file that is read in. It houses
 		a few versions of the text and related data. That data includes the author and 
 		various statistics about the text's style. Those statistics are calculated on 
-		initialization.Note that most of the statistics are calculated based on the first 
+		initialization. Note that most of the statistics are calculated based on the first 
 		40,000 words of the text, since I perceive that to be a representative sample. 
 		Keeping the sample sizes consistent makes the statistics relevant for comparison 
 		with other novels. The statisticsused for comparison are stored as {stat name : value} 
