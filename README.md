@@ -33,9 +33,11 @@ CLASSES / STRUCTURES:
 		
 	Author:
 		The Author class serves to organize all the texts from a particular author. Each 
-		Author object takes an author name and a filepath as arguments. On initialization, 
-		the object will create Novel objects from the files in the filepath given and all of 
-		its subfolders. Then it stores all of those novel objects in a list named 'corpus'. 
+		Author object takes an author name and a filepath as arguments. In prsactice, the 
+		name argument is derived from the subdirectory name that holds the author's texts. 
+		On initialization, the Author object will create Novel objects from the files in the 
+		filepath given and all of its subfolders. Then it stores all of those novel objects 
+		in a list named 'corpus'. 
 
 PROGRAM FLOW:
 
