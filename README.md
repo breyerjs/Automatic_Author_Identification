@@ -12,7 +12,7 @@ EXTERNAL MODULES / PACKAGES REQUIRED:
 OVERVIEW:
 
 	For each subdirectory (author) in an input filepath, this program reads in several novels 
-	written by that author. A subdirectory named test is used as test data. Then the program
+	written by that author. A subdirectory named test is used as test data. The program
 	calculates statistics about the writing style of each author's texts, in an attempt to 
 	fingerprint the author's writing style. Then, the program uses a Maximum Entropy Classifier 
 	to identify the author of the test data--previously unseen novels which are presumed to have 
