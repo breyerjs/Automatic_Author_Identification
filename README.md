@@ -13,7 +13,7 @@ OVERVIEW:
 
 	For each subdirectory (author) in an input filepath, this program reads in several novels 
 	written by that author. A subdirectory named test is used as test data. Then the program
-	calculates statistics about the writing style of each authors' texts, in an attempt to 
+	calculates statistics about the writing style of each author's texts, in an attempt to 
 	fingerprint the author's writing style. Then, the program uses a Maximum Entropy Classifier 
 	to identify the author of previously unseen novels, written by one of the previously seen 
 	authors. The text files for all the novels in this repository are taken 
