@@ -15,9 +15,9 @@ OVERVIEW:
 	written by that author. A subdirectory named test is used as test data. Then the program
 	calculates statistics about the writing style of each author's texts, in an attempt to 
 	fingerprint the author's writing style. Then, the program uses a Maximum Entropy Classifier 
-	to identify the author of previously unseen novels, written by one of the previously seen 
-	authors. The text files for all the novels in this repository are taken 
-	from https://www.gutenberg.org/
+	to identify the author of the test data--previously unseen novels which are presumed to have been 
+	written by one of the previously seen authors. Please note that the text files for all novels
+	in this repository are taken from https://www.gutenberg.org/
 	
 CLASSES / STRUCTURES:
 
