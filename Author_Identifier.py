@@ -11,7 +11,7 @@ from nltk.classify import maxent
 #                   ENTER FILEPATH HERE                                    #
 ############################################################################
 
-theFilepath = "ENTER FILEPATH HERE"
+theFilepath = "ENTER CORPUS FILEPATH HERE"
 
 ############################################################################
 #                                                                          #
