@@ -47,11 +47,11 @@ CLASSES / STRUCTURES:
 PROGRAM FLOW:
 
 	1. User Enters Information:
-		In order to run this program, the user must enter a corpus filepath. In the filepath, there
-		must be one subdirectory per known author. Each subdirectory must contain some number of 
-		novels by that author. There must also be a subdirectory named "Test", which will house 
-		the novels to be evaluated. These need not all be written by the same author, but they 
-		should each be written by one of the known authors. 
+		In order to run this program, the user must enter a corpus filepath. In the filepath, 
+		there must be one subdirectory per known author. Each subdirectory must contain some 
+		number of novels by that author. There must also be a subdirectory named "Test", which 
+		will house the novels to be evaluated. These need not all be written by the same author, 
+		but they should each be written by one of the known authors. 
 
 	2. Create Authors:
 		The program begins by creating the Author objects for each of the author filepaths. 
