@@ -18,11 +18,14 @@ theFilepath = "ENTER CORPUS FILEPATH HERE"
 ############################################################################
 
 class Author:
+    """A class that holds all the novel objects from a particular author"""
     def __init__(self, name, filepath):
         self.name = name
         self.filepath = filepath
         self.corpus = self.getCorpus(self.filepath)
     def getCorpus(self, filepath):
+        """ Builds novel objects from all of the files in filepath and returns
+        them in a list"""
         corpusList = []
         for directory,subdir,files in os.walk(filepath):
             for f in files:
@@ -31,16 +34,19 @@ class Author:
         return corpusList
 
 class Novel:
+    """A class that brings in text from a single file and analyzes it on initialization.
+        The results of the analysis are stored in the dictionary summaryDict"""
     def __init__(self, text, filename):
         self.filename = filename
         self.fullText = text.split()
         #uses first 40k words of each novel
         self.text = " ".join(text.split()[:40000])
         self.wordTokenizedText = nltk.tokenize.word_tokenize(self.text)
+        #frequency distribution
         self.fd = nltk.FreqDist(self.wordTokenizedText)
         self.numTokens = self.getNumTokens()
         self.summaryDict = {
-                # for some reason, getting these to be around 1>x>0.1 works best
+                # getting these to be roughly 1>x>0.1 works best
                 # see prime_data().
                 "Word Count":               self.wordCount(),
                 "Frequency of And":         self.freqOfAnd(),
@@ -75,8 +81,12 @@ class Novel:
     def freqOfMFWXMinusMFWY(self, x, y):
         return (self.fd.most_common(y)[x-1][1]/self.numTokens)-(self.fd.most_common(y)[y-1][1]/self.numTokens)
 
-# Function to make values of summaryDict roughly btwn 0.1 and 1. This improves performance significantly.
+####################################### MISC FUNCTION ######################################
+
 def prime_data(listOfAuthors):
+    """Big, ugly function to make values of summaryDict roughly btwn 0.1 and 1. It does this by
+    multiplying or dividing all related values by some power of 10. This does not affect their relation
+    to one another and improves performance significantly."""
     for feature in listOfAuthors[0].corpus[0].summaryDict.keys():
         allOfFeature = []
         for author in listOfAuthors:
@@ -103,6 +113,8 @@ def prime_data(listOfAuthors):
     
 ####################################### CREATE AUTHORS ######################################
 
+#Creates author objects from wach subdirectory in the filepath. The "test" author is the
+#one that contains all unidentified novels. 
 allAuthors = []
 for directory,subdir,files in os.walk(theFilepath):
     for s in subdir:
@@ -110,6 +122,8 @@ for directory,subdir,files in os.walk(theFilepath):
         allAuthors.append(Author(s, authFilePath))
 allAuthors = prime_data(allAuthors)
 
+#Creates a separate list of all authors except the "test" author, which is
+#assigned to the variable 'testAuth'.
 knownAuthors = []
 for auth in allAuthors:
     if auth.name.lower() != "test":
